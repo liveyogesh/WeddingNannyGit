@@ -1,0 +1,79 @@
+import React from 'react';
+
+const PackageComparison: React.FC = () => {
+  const features = [
+    { label: "Vetted Nannies", elopement: "1", basic: "1-2", premium: "2-4", multi: "Dedicated Team" },
+    { label: "Child Ratio", elopement: "1:4", basic: "1:4", premium: "1:4", multi: "1:4" },
+    { label: "Duration", elopement: "3 Hours", basic: "4 Hours", premium: "6 Hours", multi: "3+ Functions" },
+    { label: "Activity Zone", elopement: "Basic Kit", basic: "Supervised Play", premium: "Custom Themed", multi: "Multiple Setups" },
+    { label: "Nap Area", elopement: false, basic: true, premium: true, multi: true },
+    { label: "Meal Help", elopement: false, basic: true, premium: true, multi: true },
+    { label: "Parent Updates", elopement: false, basic: false, premium: true, multi: true },
+    { label: "Lead intro", elopement: false, basic: true, premium: true, multi: true },
+  ];
+
+  return (
+    <section id="comparison" className="py-24 bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 text-center">
+        <h2 className="text-4xl playfair md:text-5xl font-extrabold text-navy-gemini dark:text-white mb-6">Compare Plans Side-by-Side ⚖️</h2>
+        <p className="text-xl text-gray-500 dark:text-slate-400 mb-16 max-w-3xl mx-auto">Find the perfect balance of care and entertainment for your specific guest list.</p>
+
+        <div className="overflow-x-auto pb-4">
+          <table className="w-full text-left border-collapse bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-2xl border dark:border-slate-700">
+            <thead>
+              <tr className="bg-navy-gemini text-white">
+                <th className="p-6 text-lg font-bold">Features</th>
+                <th className="p-6 text-center">
+                  <span className="block text-sm opacity-70">Budget</span>
+                  <span className="text-lg">Elopement</span>
+                </th>
+                <th className="p-6 text-center">
+                  <span className="block text-sm opacity-70">Short</span>
+                  <span className="text-lg">Basic</span>
+                </th>
+                <th className="p-6 text-center bg-rose-gemini relative">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-400 text-navy-gemini text-[10px] px-3 py-1 rounded-full font-bold">BEST VALUE</div>
+                  <span className="block text-sm opacity-70">Full Event</span>
+                  <span className="text-lg font-extrabold">Premium</span>
+                </th>
+                <th className="p-6 text-center">
+                  <span className="block text-sm opacity-70">3+ Functions</span>
+                  <span className="text-lg">Multi-Day</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100 dark:divide-slate-700">
+              {features.map((f, i) => (
+                <tr key={i} className="hover:bg-rose-50/30 dark:hover:bg-slate-700/50 transition-colors">
+                  <td className="p-6 font-bold text-navy-gemini dark:text-slate-200">{f.label}</td>
+                  <td className="p-6 text-center text-sm text-gray-600 dark:text-slate-400">{renderValue(f.elopement)}</td>
+                  <td className="p-6 text-center text-sm text-gray-600 dark:text-slate-400">{renderValue(f.basic)}</td>
+                  <td className="p-6 text-center text-sm font-bold text-rose-gemini bg-rose-50/10 dark:bg-rose-900/5">{renderValue(f.premium)}</td>
+                  <td className="p-6 text-center text-sm text-gray-600 dark:text-slate-400">{renderValue(f.multi)}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td className="p-6"></td>
+                <td className="p-6 text-center"><button onClick={() => window.location.href="#contact"} className="text-xs font-bold text-rose-gemini underline">Choose</button></td>
+                <td className="p-6 text-center"><button onClick={() => window.location.href="#contact"} className="text-xs font-bold text-rose-gemini underline">Choose</button></td>
+                <td className="p-6 text-center bg-rose-50/10 dark:bg-rose-900/5"><button onClick={() => window.location.href="#contact"} className="text-xs font-bold text-rose-gemini bg-rose-gemini text-white px-4 py-2 rounded-full shadow-lg">Most Popular</button></td>
+                <td className="p-6 text-center"><button onClick={() => window.location.href="#contact"} className="text-xs font-bold text-rose-gemini underline">Enquire</button></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+function renderValue(val: string | boolean) {
+  if (typeof val === 'boolean') {
+    return val ? <i className="fas fa-check-circle text-green-500 text-lg"></i> : <i className="fas fa-times-circle text-gray-200 text-lg"></i>;
+  }
+  return val;
+}
+
+export default PackageComparison;
